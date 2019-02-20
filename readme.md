@@ -1,10 +1,13 @@
-Eclipse Mosquitto
+Debloated Eclipse Mosquitto
 =================
 
 Mosquitto is an open source implementation of a server for version 3.1 and
 3.1.1 of the MQTT protocol. It also includes a C and C++ client library, and
 the `mosquitto_pub` and `mosquitto_sub` utilities for publishing and
 subscribing.
+
+This repository is dedicated as a testbed for verifying toolsets that 
+automatically work to debloat given protocols using coverage and NLP-based tools.
 
 ## Links
 
