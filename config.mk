@@ -127,7 +127,7 @@ ifeq ($(UNAME),SunOS)
 	endif
 else
 	# Adding profiling instrumentation args for llvm-cov/gcov.
-	CFLAGS?=-Wall -ggdb -O2 -fprofile-arcs -ftest-coverage
+	CFLAGS?=-Wall -ggdb -O2
 endif
 
 STATIC_LIB_DEPS:=
