@@ -120,19 +120,20 @@ DB_HTML_XSL=man/html.xsl
 UNAME:=$(shell uname -s)
 
 ifeq ($(UNAME),SunOS)
-	ifeq ($(CC),cc)
+	ifeq ($(CC),clang)
 		CFLAGS?=-O
 	else
 		CFLAGS?=-Wall -ggdb -O2
 	endif
 else
-	CFLAGS?=-Wall -ggdb -O2
+	# Adding profiling instrumentation args for llvm-cov/gcov.
+	CFLAGS?=-Wall -ggdb -O2 -fprofile-arcs -ftest-coverage
 endif
 
 STATIC_LIB_DEPS:=
 LIB_CFLAGS:=${CFLAGS} ${CPPFLAGS} -I. -I.. -I../lib
 LIB_CXXFLAGS:=$(CFLAGS) ${CPPFLAGS} -I. -I.. -I../lib
-LIB_LDFLAGS:=${LDFLAGS}
+LIB_LDFLAGS:=${LDFLAGS} -lgcov --coverage
 
 BROKER_CFLAGS:=${LIB_CFLAGS} ${CPPFLAGS} -DVERSION="\"${VERSION}\"" -DWITH_BROKER
 CLIENT_CFLAGS:=${CFLAGS} ${CPPFLAGS} -I.. -I../lib -DVERSION="\"${VERSION}\""
@@ -150,7 +151,7 @@ ifeq ($(UNAME),Linux)
 	LIB_LIBS:=$(LIB_LIBS) -lrt
 endif
 
-CLIENT_LDFLAGS:=$(LDFLAGS) -L../lib
+CLIENT_LDFLAGS:=$(LDFLAGS) -L../lib -lgcov --coverage
 ifeq ($(WITH_SHARED_LIBRARIES),yes)
 	CLIENT_LDFLAGS:=${CLIENT_LDFLAGS} ../lib/libmosquitto.so.${SOVERSION}
 endif

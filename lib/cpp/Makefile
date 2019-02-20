@@ -1,7 +1,7 @@
 include ../../config.mk
 
 ifneq ($(UNAME),SunOS)
-	LIB_LDFLAGS:=$(LDFLAGS) -Wl,-soname,libmosquittopp.so.${SOVERSION}
+	LIB_LDFLAGS:=$(LDFLAGS) -lgcov --coverage -Wl,-soname,libmosquittopp.so.${SOVERSION}
 endif
 
 .PHONY : clean install
@@ -35,7 +35,7 @@ uninstall :
 	-rm -f "${DESTDIR}${incdir}/mosquittopp.h"
 
 clean :
-	-rm -f *.o libmosquittopp.so.${SOVERSION} libmosquittopp.a
+	-rm -f *.o *.gcno libmosquittopp.so.${SOVERSION} libmosquittopp.a
 
 libmosquittopp.so.${SOVERSION} : mosquittopp.o
 	${CROSS_COMPILE}$(CXX) -shared $(LIB_LDFLAGS) $< -o $@ ../libmosquitto.so.${SOVERSION}

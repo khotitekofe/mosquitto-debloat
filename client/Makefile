@@ -62,4 +62,4 @@ uninstall :
 reallyclean : clean
 
 clean : 
-	-rm -f *.o mosquitto_pub mosquitto_sub
+	-rm -f *.o *.gcno mosquitto_pub mosquitto_sub

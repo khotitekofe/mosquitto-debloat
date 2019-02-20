@@ -55,8 +55,10 @@ OBJS=	mosquitto.o \
 		websockets.o \
 		will_mosq.o
 
+COV_LDFLAGS:=${LDFLAGS} -lgcov --coverage
+
 mosquitto : ${OBJS}
-	${CROSS_COMPILE}${CC} $^ -o $@ ${LDFLAGS} $(BROKER_LIBS)
+	${CROSS_COMPILE}${CC} $^ -o $@ ${COV_LDFLAGS} $(BROKER_LIBS)
 
 mosquitto.o : mosquitto.c mosquitto_broker_internal.h
 	${CROSS_COMPILE}${CC} $(BROKER_CFLAGS) -c $< -o $@
@@ -197,7 +199,7 @@ will_mosq.o : ../lib/will_mosq.c ../lib/will_mosq.h
 	${CROSS_COMPILE}${CC} $(BROKER_CFLAGS) -c $< -o $@
 
 mosquitto_passwd : mosquitto_passwd.o
-	${CROSS_COMPILE}${CC} $^ -o $@ ${LDFLAGS} $(PASSWD_LIBS)
+	${CROSS_COMPILE}${CC} $^ -o $@ ${COV_LDFLAGS} $(PASSWD_LIBS)
 
 mosquitto_passwd.o : mosquitto_passwd.c
 	${CROSS_COMPILE}${CC} -I.. $(CFLAGS) ${CPPFLAGS} -c $< -o $@
@@ -223,7 +225,7 @@ uninstall :
 	-rm -f "${DESTDIR}${prefix}/bin/mosquitto_passwd"
 
 clean : 
-	-rm -f *.o mosquitto mosquitto_passwd
+	-rm -f *.o *.gcno *.gcda *.gcov mosquitto mosquitto_passwd
 
 reallyclean : clean
 	-rm -rf *.orig *.db
