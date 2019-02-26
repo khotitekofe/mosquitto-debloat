@@ -127,12 +127,14 @@ ifeq ($(UNAME),SunOS)
 	endif
 else
 	# Adding profiling instrumentation args for llvm-cov/gcov.
+	# Maybe check which optimization level would be best to use later.
 	CFLAGS?=-Wall -ggdb -O2 -fprofile-arcs -ftest-coverage
 endif
 
 STATIC_LIB_DEPS:=
 LIB_CFLAGS:=${CFLAGS} ${CPPFLAGS} -I. -I.. -I../lib
 LIB_CXXFLAGS:=$(CFLAGS) ${CPPFLAGS} -I. -I.. -I../lib
+# Need to add flags for linker to include coverage data.
 LIB_LDFLAGS:=${LDFLAGS} -lgcov --coverage
 
 BROKER_CFLAGS:=${LIB_CFLAGS} ${CPPFLAGS} -DVERSION="\"${VERSION}\"" -DWITH_BROKER
