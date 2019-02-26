@@ -29,6 +29,7 @@ clean :
 	set -e; for d in ${DIRS}; do $(MAKE) -C $${d} clean; done
 	set -e; for d in ${DOCDIRS}; do $(MAKE) -C $${d} clean; done
 	$(MAKE) -C test clean
+	rm -rf CMakeFiles CMakeCache.txt
 
 reallyclean : 
 	set -e; for d in ${DIRS}; do $(MAKE) -C $${d} reallyclean; done
