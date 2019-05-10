@@ -126,9 +126,11 @@ ifeq ($(UNAME),SunOS)
 		CFLAGS?=-Wall -ggdb -O2
 	endif
 else
+	# Changing to clang to emit llvm bitcode.
+	CC=clang
 	# Adding profiling instrumentation args for llvm-cov/gcov.
-	# Maybe check which optimization level would be best to use later.
-	CFLAGS?=-Wall -ggdb -O2 -fprofile-arcs -ftest-coverage
+	# TODO: try replacing -ggdb with -g
+	CFLAGS?=-Wall -ggdb -O2 -fprofile-arcs -ftest-coverage #-c -emit-llvm
 endif
 
 STATIC_LIB_DEPS:=
