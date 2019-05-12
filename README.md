@@ -9,6 +9,9 @@ subscribing.
 This repository is dedicated as a testbed for verifying toolsets that 
 automatically work to debloat given protocols using coverage and NLP-based tools.
 
+## Mac OSX Stuff
+`cmake -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2r -DOPENSSL_LIBRARIES=/usr/local/Cellar/openssl/1.0.2r/lib .`
+
 ## Links
 
 See the following links for more information on MQTT:
