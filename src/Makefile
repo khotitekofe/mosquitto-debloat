@@ -228,4 +228,4 @@ clean :
 	-rm -f *.o *.gcno *.gcda *.gcov mosquitto mosquitto_passwd
 
 reallyclean : clean
-	-rm -rf *.orig *.db
+	-rm -rf *.orig *.db *.info
