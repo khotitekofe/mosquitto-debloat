@@ -127,7 +127,8 @@ ifeq ($(UNAME),SunOS)
 	endif
 else
 	# Changing to clang to emit llvm bitcode.
-	CC=clang
+	# Using cc for gcov report version mismatch.
+	CC=cc
 	# Adding profiling instrumentation args for llvm-cov/gcov.
 	# TODO: try replacing -ggdb with -g
 	CFLAGS?=-Wall -ggdb -O2 -fprofile-arcs -ftest-coverage #-c -emit-llvm
