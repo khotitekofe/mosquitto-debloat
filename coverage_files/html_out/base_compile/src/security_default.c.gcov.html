@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - base_cov.info - src/security_default.c</title>
+  <title>LCOV - base_compile.cov - src/security_default.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">base_cov.info</td>
+            <td class="headerValue">base_compile.cov</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">45</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-15 12:59:57</td>
+            <td class="headerValue">2019-05-15 14:49:44</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -360,7 +360,7 @@
 <a name="298"><span class="lineNum">     298 </span>            :         return MOSQ_ERR_SUCCESS;</a>
 <a name="299"><span class="lineNum">     299 </span>            : }</a>
 <a name="300"><span class="lineNum">     300 </span>            : </a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          7 : int mosquitto_acl_check_default(struct mosquitto_db *db, struct mosquitto *context, const char *topic, int access)</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">         20 : int mosquitto_acl_check_default(struct mosquitto_db *db, struct mosquitto *context, const char *topic, int access)</span></a>
 <a name="302"><span class="lineNum">     302 </span>            : {</a>
 <a name="303"><span class="lineNum">     303 </span>            :         char *local_acl;</a>
 <a name="304"><span class="lineNum">     304 </span>            :         struct mosquitto__acl *acl_root;</a>
@@ -368,18 +368,18 @@
 <a name="306"><span class="lineNum">     306 </span>            :         int i;</a>
 <a name="307"><span class="lineNum">     307 </span>            :         int len, tlen, clen, ulen;</a>
 <a name="308"><span class="lineNum">     308 </span>            :         char *s;</a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          7 :         struct mosquitto__security_options *security_opts = NULL;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         20 :         struct mosquitto__security_options *security_opts = NULL;</span></a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          7 :         if(!db || !context || !topic) return MOSQ_ERR_INVAL;</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          7 :         if(context-&gt;bridge) return MOSQ_ERR_SUCCESS;</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">         20 :         if(!db || !context || !topic) return MOSQ_ERR_INVAL;</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">         20 :         if(context-&gt;bridge) return MOSQ_ERR_SUCCESS;</span></a>
 <a name="313"><span class="lineNum">     313 </span>            : </a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          7 :         if(db-&gt;config-&gt;per_listener_settings){</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">         20 :         if(db-&gt;config-&gt;per_listener_settings){</span></a>
 <a name="315"><span class="lineNum">     315 </span><span class="lineNoCov">          0 :                 if(!context-&gt;listener) return MOSQ_ERR_ACL_DENIED;</span></a>
 <a name="316"><span class="lineNum">     316 </span><span class="lineNoCov">          0 :                 security_opts = &amp;context-&gt;listener-&gt;security_options;</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :         }else{</a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          7 :                 security_opts = &amp;db-&gt;config-&gt;security_options;</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         20 :                 security_opts = &amp;db-&gt;config-&gt;security_options;</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :         }</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">          7 :         if(!security_opts-&gt;acl_file &amp;&amp; !security_opts-&gt;acl_list &amp;&amp; !security_opts-&gt;acl_patterns){</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">         20 :         if(!security_opts-&gt;acl_file &amp;&amp; !security_opts-&gt;acl_list &amp;&amp; !security_opts-&gt;acl_patterns){</span></a>
 <a name="321"><span class="lineNum">     321 </span>            :                         return MOSQ_ERR_PLUGIN_DEFER;</a>
 <a name="322"><span class="lineNum">     322 </span>            :         }</a>
 <a name="323"><span class="lineNum">     323 </span>            : </a>
@@ -673,22 +673,22 @@
 <a name="611"><span class="lineNum">     611 </span>            : }</a>
 <a name="612"><span class="lineNum">     612 </span>            : </a>
 <a name="613"><span class="lineNum">     613 </span>            : </a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">          5 : int acl__find_acls(struct mosquitto_db *db, struct mosquitto *context)</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">         11 : int acl__find_acls(struct mosquitto_db *db, struct mosquitto *context)</span></a>
 <a name="615"><span class="lineNum">     615 </span>            : {</a>
 <a name="616"><span class="lineNum">     616 </span>            :         struct mosquitto__acl_user *acl_tail;</a>
 <a name="617"><span class="lineNum">     617 </span>            :         struct mosquitto__security_options *security_opts;</a>
 <a name="618"><span class="lineNum">     618 </span>            : </a>
 <a name="619"><span class="lineNum">     619 </span>            :         /* Associate user with its ACL, assuming we have ACLs loaded. */</a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineCov">          5 :         if(db-&gt;config-&gt;per_listener_settings){</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">         11 :         if(db-&gt;config-&gt;per_listener_settings){</span></a>
 <a name="621"><span class="lineNum">     621 </span><span class="lineNoCov">          0 :                 if(!context-&gt;listener){</span></a>
 <a name="622"><span class="lineNum">     622 </span>            :                         return MOSQ_ERR_INVAL;</a>
 <a name="623"><span class="lineNum">     623 </span>            :                 }</a>
 <a name="624"><span class="lineNum">     624 </span><span class="lineNoCov">          0 :                 security_opts = &amp;context-&gt;listener-&gt;security_options;</span></a>
 <a name="625"><span class="lineNum">     625 </span>            :         }else{</a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineCov">          5 :                 security_opts = &amp;db-&gt;config-&gt;security_options;</span></a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">         11 :                 security_opts = &amp;db-&gt;config-&gt;security_options;</span></a>
 <a name="627"><span class="lineNum">     627 </span>            :         }</a>
 <a name="628"><span class="lineNum">     628 </span>            : </a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">          5 :         if(security_opts-&gt;acl_list){</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">         11 :         if(security_opts-&gt;acl_list){</span></a>
 <a name="630"><span class="lineNum">     630 </span>            :                 acl_tail = security_opts-&gt;acl_list;</a>
 <a name="631"><span class="lineNum">     631 </span><span class="lineNoCov">          0 :                 while(acl_tail){</span></a>
 <a name="632"><span class="lineNum">     632 </span><span class="lineNoCov">          0 :                         if(context-&gt;username){</span></a>
@@ -708,7 +708,7 @@
 <a name="646"><span class="lineNum">     646 </span>            :                         return MOSQ_ERR_INVAL;</a>
 <a name="647"><span class="lineNum">     647 </span>            :                 }</a>
 <a name="648"><span class="lineNum">     648 </span>            :         }else{</a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">          5 :                 context-&gt;acl_list = NULL;</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">         11 :                 context-&gt;acl_list = NULL;</span></a>
 <a name="650"><span class="lineNum">     650 </span>            :         }</a>
 <a name="651"><span class="lineNum">     651 </span>            : </a>
 <a name="652"><span class="lineNum">     652 </span>            :         return MOSQ_ERR_SUCCESS;</a>

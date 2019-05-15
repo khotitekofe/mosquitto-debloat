@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - base_cov.info - lib/net_mosq.c</title>
+  <title>LCOV - base_compile.cov - lib/net_mosq.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">base_cov.info</td>
+            <td class="headerValue">base_compile.cov</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">36</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-15 12:59:57</td>
+            <td class="headerValue">2019-05-15 14:49:44</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -193,20 +193,20 @@
 <a name="131"><span class="lineNum">     131 </span>            :  * Returns 0 on success.</a>
 <a name="132"><span class="lineNum">     132 </span>            :  */</a>
 <a name="133"><span class="lineNum">     133 </span>            : #ifdef WITH_BROKER</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">         10 : int net__socket_close(struct mosquitto_db *db, struct mosquitto *mosq)</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">         22 : int net__socket_close(struct mosquitto_db *db, struct mosquitto *mosq)</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : #else</a>
 <a name="136"><span class="lineNum">     136 </span>            : int net__socket_close(struct mosquitto *mosq)</a>
 <a name="137"><span class="lineNum">     137 </span>            : #endif</a>
 <a name="138"><span class="lineNum">     138 </span>            : {</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         10 :         int rc = 0;</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">         22 :         int rc = 0;</span></a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         10 :         assert(mosq);</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         22 :         assert(mosq);</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : #ifdef WITH_TLS</a>
 <a name="143"><span class="lineNum">     143 </span>            : #ifdef WITH_WEBSOCKETS</a>
 <a name="144"><span class="lineNum">     144 </span>            :         if(!mosq-&gt;wsi)</a>
 <a name="145"><span class="lineNum">     145 </span>            : #endif</a>
 <a name="146"><span class="lineNum">     146 </span>            :         {</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         10 :                 if(mosq-&gt;ssl){</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">         22 :                 if(mosq-&gt;ssl){</span></a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineNoCov">          0 :                         SSL_shutdown(mosq-&gt;ssl);</span></a>
 <a name="149"><span class="lineNum">     149 </span><span class="lineNoCov">          0 :                         SSL_free(mosq-&gt;ssl);</span></a>
 <a name="150"><span class="lineNum">     150 </span><span class="lineNoCov">          0 :                         mosq-&gt;ssl = NULL;</span></a>
@@ -224,22 +224,22 @@
 <a name="162"><span class="lineNum">     162 </span>            :         }else</a>
 <a name="163"><span class="lineNum">     163 </span>            : #endif</a>
 <a name="164"><span class="lineNum">     164 </span>            :         {</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         10 :                 if((int)mosq-&gt;sock &gt;= 0){</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         22 :                 if((int)mosq-&gt;sock &gt;= 0){</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : #ifdef WITH_BROKER</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          5 :                         HASH_DELETE(hh_sock, db-&gt;contexts_by_sock, mosq);</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         11 :                         HASH_DELETE(hh_sock, db-&gt;contexts_by_sock, mosq);</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : #endif</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          5 :                         rc = COMPAT_CLOSE(mosq-&gt;sock);</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          5 :                         mosq-&gt;sock = INVALID_SOCKET;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">         11 :                         rc = COMPAT_CLOSE(mosq-&gt;sock);</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         11 :                         mosq-&gt;sock = INVALID_SOCKET;</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :                 }</a>
 <a name="172"><span class="lineNum">     172 </span>            :         }</a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
 <a name="174"><span class="lineNum">     174 </span>            : #ifdef WITH_BROKER</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         10 :         if(mosq-&gt;listener){</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         10 :                 mosq-&gt;listener-&gt;client_count--;</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         22 :         if(mosq-&gt;listener){</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         22 :                 mosq-&gt;listener-&gt;client_count--;</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :         }</a>
 <a name="178"><span class="lineNum">     178 </span>            : #endif</a>
 <a name="179"><span class="lineNum">     179 </span>            : </a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         10 :         return rc;</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         22 :         return rc;</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : }</a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
@@ -739,16 +739,16 @@
 <a name="677"><span class="lineNum">     677 </span>            : }</a>
 <a name="678"><span class="lineNum">     678 </span>            : </a>
 <a name="679"><span class="lineNum">     679 </span>            : </a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">         39 : ssize_t net__read(struct mosquitto *mosq, void *buf, size_t count)</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">         86 : ssize_t net__read(struct mosquitto *mosq, void *buf, size_t count)</span></a>
 <a name="681"><span class="lineNum">     681 </span>            : {</a>
 <a name="682"><span class="lineNum">     682 </span>            : #ifdef WITH_TLS</a>
 <a name="683"><span class="lineNum">     683 </span>            :         int ret;</a>
 <a name="684"><span class="lineNum">     684 </span>            :         int err;</a>
 <a name="685"><span class="lineNum">     685 </span>            : #endif</a>
-<a name="686"><span class="lineNum">     686 </span><span class="lineCov">         39 :         assert(mosq);</span></a>
-<a name="687"><span class="lineNum">     687 </span><span class="lineCov">         39 :         errno = 0;</span></a>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">         86 :         assert(mosq);</span></a>
+<a name="687"><span class="lineNum">     687 </span><span class="lineCov">         86 :         errno = 0;</span></a>
 <a name="688"><span class="lineNum">     688 </span>            : #ifdef WITH_TLS</a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         39 :         if(mosq-&gt;ssl){</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         86 :         if(mosq-&gt;ssl){</span></a>
 <a name="690"><span class="lineNum">     690 </span><span class="lineNoCov">          0 :                 ERR_clear_error();</span></a>
 <a name="691"><span class="lineNum">     691 </span><span class="lineNoCov">          0 :                 ret = SSL_read(mosq-&gt;ssl, buf, count);</span></a>
 <a name="692"><span class="lineNum">     692 </span><span class="lineNoCov">          0 :                 if(ret &lt;= 0){</span></a>
@@ -775,7 +775,7 @@
 <a name="713"><span class="lineNum">     713 </span>            : #endif</a>
 <a name="714"><span class="lineNum">     714 </span>            : </a>
 <a name="715"><span class="lineNum">     715 </span>            : #ifndef WIN32</a>
-<a name="716"><span class="lineNum">     716 </span><span class="lineCov">         39 :         return read(mosq-&gt;sock, buf, count);</span></a>
+<a name="716"><span class="lineNum">     716 </span><span class="lineCov">         86 :         return read(mosq-&gt;sock, buf, count);</span></a>
 <a name="717"><span class="lineNum">     717 </span>            : #else</a>
 <a name="718"><span class="lineNum">     718 </span>            :         return recv(mosq-&gt;sock, buf, count, 0);</a>
 <a name="719"><span class="lineNum">     719 </span>            : #endif</a>
@@ -785,17 +785,17 @@
 <a name="723"><span class="lineNum">     723 </span>            : #endif</a>
 <a name="724"><span class="lineNum">     724 </span>            : }</a>
 <a name="725"><span class="lineNum">     725 </span>            : </a>
-<a name="726"><span class="lineNum">     726 </span><span class="lineCov">         11 : ssize_t net__write(struct mosquitto *mosq, void *buf, size_t count)</span></a>
+<a name="726"><span class="lineNum">     726 </span><span class="lineCov">         22 : ssize_t net__write(struct mosquitto *mosq, void *buf, size_t count)</span></a>
 <a name="727"><span class="lineNum">     727 </span>            : {</a>
 <a name="728"><span class="lineNum">     728 </span>            : #ifdef WITH_TLS</a>
 <a name="729"><span class="lineNum">     729 </span>            :         int ret;</a>
 <a name="730"><span class="lineNum">     730 </span>            :         int err;</a>
 <a name="731"><span class="lineNum">     731 </span>            : #endif</a>
-<a name="732"><span class="lineNum">     732 </span><span class="lineCov">         11 :         assert(mosq);</span></a>
+<a name="732"><span class="lineNum">     732 </span><span class="lineCov">         22 :         assert(mosq);</span></a>
 <a name="733"><span class="lineNum">     733 </span>            : </a>
-<a name="734"><span class="lineNum">     734 </span><span class="lineCov">         11 :         errno = 0;</span></a>
+<a name="734"><span class="lineNum">     734 </span><span class="lineCov">         22 :         errno = 0;</span></a>
 <a name="735"><span class="lineNum">     735 </span>            : #ifdef WITH_TLS</a>
-<a name="736"><span class="lineNum">     736 </span><span class="lineCov">         11 :         if(mosq-&gt;ssl){</span></a>
+<a name="736"><span class="lineNum">     736 </span><span class="lineCov">         22 :         if(mosq-&gt;ssl){</span></a>
 <a name="737"><span class="lineNum">     737 </span><span class="lineNoCov">          0 :                 mosq-&gt;want_write = false;</span></a>
 <a name="738"><span class="lineNum">     738 </span><span class="lineNoCov">          0 :                 ERR_clear_error();</span></a>
 <a name="739"><span class="lineNum">     739 </span><span class="lineNoCov">          0 :                 ret = SSL_write(mosq-&gt;ssl, buf, count);</span></a>
@@ -822,7 +822,7 @@
 <a name="760"><span class="lineNum">     760 </span>            : #endif</a>
 <a name="761"><span class="lineNum">     761 </span>            : </a>
 <a name="762"><span class="lineNum">     762 </span>            : #ifndef WIN32</a>
-<a name="763"><span class="lineNum">     763 </span><span class="lineCov">         11 :         return write(mosq-&gt;sock, buf, count);</span></a>
+<a name="763"><span class="lineNum">     763 </span><span class="lineCov">         22 :         return write(mosq-&gt;sock, buf, count);</span></a>
 <a name="764"><span class="lineNum">     764 </span>            : #else</a>
 <a name="765"><span class="lineNum">     765 </span>            :         return send(mosq-&gt;sock, buf, count, 0);</a>
 <a name="766"><span class="lineNum">     766 </span>            : #endif</a>
@@ -833,18 +833,18 @@
 <a name="771"><span class="lineNum">     771 </span>            : }</a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
 <a name="773"><span class="lineNum">     773 </span>            : </a>
-<a name="774"><span class="lineNum">     774 </span><span class="lineCov">          7 : int net__socket_nonblock(mosq_sock_t *sock)</span></a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">         13 : int net__socket_nonblock(mosq_sock_t *sock)</span></a>
 <a name="775"><span class="lineNum">     775 </span>            : {</a>
 <a name="776"><span class="lineNum">     776 </span>            : #ifndef WIN32</a>
 <a name="777"><span class="lineNum">     777 </span>            :         int opt;</a>
 <a name="778"><span class="lineNum">     778 </span>            :         /* Set non-blocking */</a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          7 :         opt = fcntl(*sock, F_GETFL, 0);</span></a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          7 :         if(opt == -1){</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">         13 :         opt = fcntl(*sock, F_GETFL, 0);</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">         13 :         if(opt == -1){</span></a>
 <a name="781"><span class="lineNum">     781 </span><span class="lineNoCov">          0 :                 COMPAT_CLOSE(*sock);</span></a>
 <a name="782"><span class="lineNum">     782 </span><span class="lineNoCov">          0 :                 *sock = INVALID_SOCKET;</span></a>
 <a name="783"><span class="lineNum">     783 </span><span class="lineNoCov">          0 :                 return MOSQ_ERR_ERRNO;</span></a>
 <a name="784"><span class="lineNum">     784 </span>            :         }</a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">          7 :         if(fcntl(*sock, F_SETFL, opt | O_NONBLOCK) == -1){</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">         13 :         if(fcntl(*sock, F_SETFL, opt | O_NONBLOCK) == -1){</span></a>
 <a name="786"><span class="lineNum">     786 </span>            :                 /* If either fcntl fails, don't want to allow this client to connect. */</a>
 <a name="787"><span class="lineNum">     787 </span><span class="lineNoCov">          0 :                 COMPAT_CLOSE(*sock);</span></a>
 <a name="788"><span class="lineNum">     788 </span><span class="lineNoCov">          0 :                 return MOSQ_ERR_ERRNO;</span></a>

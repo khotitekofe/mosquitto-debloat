@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - base_cov.info - src/loop.c</title>
+  <title>LCOV - base_compile.cov - src/loop.c</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">base_cov.info</td>
+            <td class="headerValue">base_compile.cov</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">101</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2019-05-15 12:59:57</td>
+            <td class="headerValue">2019-05-15 14:49:44</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -258,11 +258,11 @@
 <a name="196"><span class="lineNum">     196 </span>            : #endif</a>
 <a name="197"><span class="lineNum">     197 </span>            : #endif</a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       1105 :         while(run){</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">       1104 :                 context__free_disused(db);</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">        250 :         while(run){</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        249 :                 context__free_disused(db);</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : #ifdef WITH_SYS_TREE</a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">       1104 :                 if(db-&gt;config-&gt;sys_interval &gt; 0){</span></a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       1104 :                         sys_tree__update(db, db-&gt;config-&gt;sys_interval, start_time);</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        249 :                 if(db-&gt;config-&gt;sys_interval &gt; 0){</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">        249 :                         sys_tree__update(db, db-&gt;config-&gt;sys_interval, start_time);</span></a>
 <a name="204"><span class="lineNum">     204 </span>            :                 }</a>
 <a name="205"><span class="lineNum">     205 </span>            : #endif</a>
 <a name="206"><span class="lineNum">     206 </span>            : </a>
@@ -278,21 +278,21 @@
 <a name="216"><span class="lineNum">     216 </span>            :                 }</a>
 <a name="217"><span class="lineNum">     217 </span>            : #endif</a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       1104 :                 now_time = time(NULL);</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">        249 :                 now_time = time(NULL);</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       1104 :                 time_count = 0;</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">       2094 :                 HASH_ITER(hh_sock, db-&gt;contexts_by_sock, context, ctxt_tmp){</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        990 :                         if(time_count &gt; 0){</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">        262 :                                 time_count--;</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">        249 :                 time_count = 0;</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        650 :                 HASH_ITER(hh_sock, db-&gt;contexts_by_sock, context, ctxt_tmp){</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        401 :                         if(time_count &gt; 0){</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">        193 :                                 time_count--;</span></a>
 <a name="225"><span class="lineNum">     225 </span>            :                         }else{</a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        728 :                                 time_count = 1000;</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">        728 :                                 now = mosquitto_time();</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        208 :                                 time_count = 1000;</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">        208 :                                 now = mosquitto_time();</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :                         }</a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        990 :                         context-&gt;pollfd_index = -1;</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">        401 :                         context-&gt;pollfd_index = -1;</span></a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        990 :                         if(context-&gt;sock != INVALID_SOCKET){</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        401 :                         if(context-&gt;sock != INVALID_SOCKET){</span></a>
 <a name="232"><span class="lineNum">     232 </span>            : #ifdef WITH_BRIDGE</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        990 :                                 if(context-&gt;bridge){</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">        401 :                                 if(context-&gt;bridge){</span></a>
 <a name="234"><span class="lineNum">     234 </span><span class="lineNoCov">          0 :                                         mosquitto__check_keepalive(db, context);</span></a>
 <a name="235"><span class="lineNum">     235 </span><span class="lineNoCov">          0 :                                         if(context-&gt;bridge-&gt;round_robin == false</span></a>
 <a name="236"><span class="lineNum">     236 </span><span class="lineNoCov">          0 :                                                         &amp;&amp; context-&gt;bridge-&gt;cur_address != 0</span></a>
@@ -336,13 +336,13 @@
 <a name="274"><span class="lineNum">     274 </span>            : #endif</a>
 <a name="275"><span class="lineNum">     275 </span>            : </a>
 <a name="276"><span class="lineNum">     276 </span>            :                                 /* Local bridges never time out in this fashion. */</a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        990 :                                 if(!(context-&gt;keepalive)</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">        990 :                                                 || context-&gt;bridge</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        990 :                                                 || now - context-&gt;last_msg_in &lt;= (time_t)(context-&gt;keepalive)*3/2){</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">        401 :                                 if(!(context-&gt;keepalive)</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">        401 :                                                 || context-&gt;bridge</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        401 :                                                 || now - context-&gt;last_msg_in &lt;= (time_t)(context-&gt;keepalive)*3/2){</span></a>
 <a name="280"><span class="lineNum">     280 </span>            : </a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        990 :                                         if(db__message_write(db, context) == MOSQ_ERR_SUCCESS){</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        401 :                                         if(db__message_write(db, context) == MOSQ_ERR_SUCCESS){</span></a>
 <a name="282"><span class="lineNum">     282 </span>            : #ifdef WITH_EPOLL</a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        990 :                                                 if(context-&gt;current_out_packet || context-&gt;state == mosq_cs_connect_pending || context-&gt;ws_want_write){</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        401 :                                                 if(context-&gt;current_out_packet || context-&gt;state == mosq_cs_connect_pending || context-&gt;ws_want_write){</span></a>
 <a name="284"><span class="lineNum">     284 </span><span class="lineNoCov">          0 :                                                         if(!(context-&gt;events &amp; EPOLLOUT)) {</span></a>
 <a name="285"><span class="lineNum">     285 </span><span class="lineNoCov">          0 :                                                                 ev.data.fd = context-&gt;sock;</span></a>
 <a name="286"><span class="lineNum">     286 </span><span class="lineNoCov">          0 :                                                                 ev.events = EPOLLIN | EPOLLOUT;</span></a>
@@ -356,7 +356,7 @@
 <a name="294"><span class="lineNum">     294 </span><span class="lineNoCov">          0 :                                                         context-&gt;ws_want_write = false;</span></a>
 <a name="295"><span class="lineNum">     295 </span>            :                                                 }</a>
 <a name="296"><span class="lineNum">     296 </span>            :                                                 else{</a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">        990 :                                                         if(context-&gt;events &amp; EPOLLOUT) {</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">        401 :                                                         if(context-&gt;events &amp; EPOLLOUT) {</span></a>
 <a name="298"><span class="lineNum">     298 </span><span class="lineNoCov">          0 :                                                                 ev.data.fd = context-&gt;sock;</span></a>
 <a name="299"><span class="lineNum">     299 </span><span class="lineNoCov">          0 :                                                                 ev.events = EPOLLIN;</span></a>
 <a name="300"><span class="lineNum">     300 </span><span class="lineNoCov">          0 :                                                                 if(epoll_ctl(db-&gt;epollfd, EPOLL_CTL_ADD, context-&gt;sock, &amp;ev) == -1) {</span></a>
@@ -531,8 +531,8 @@
 <a name="469"><span class="lineNum">     469 </span>            :                         }</a>
 <a name="470"><span class="lineNum">     470 </span>            :                 }</a>
 <a name="471"><span class="lineNum">     471 </span>            : #endif</a>
-<a name="472"><span class="lineNum">     472 </span><span class="lineCov">       1104 :                 now_time = time(NULL);</span></a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">       1104 :                 if(db-&gt;config-&gt;persistent_client_expiration &gt; 0 &amp;&amp; now_time &gt; expiration_check_time){</span></a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineCov">        249 :                 now_time = time(NULL);</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">        249 :                 if(db-&gt;config-&gt;persistent_client_expiration &gt; 0 &amp;&amp; now_time &gt; expiration_check_time){</span></a>
 <a name="474"><span class="lineNum">     474 </span><span class="lineNoCov">          0 :                         HASH_ITER(hh_id, db-&gt;contexts_by_id, context, ctxt_tmp){</span></a>
 <a name="475"><span class="lineNum">     475 </span><span class="lineNoCov">          0 :                                 if(context-&gt;sock == INVALID_SOCKET &amp;&amp; context-&gt;clean_session == 0){</span></a>
 <a name="476"><span class="lineNum">     476 </span>            :                                         /* This is a persistent client, check to see if the</a>
@@ -558,18 +558,18 @@
 <a name="496"><span class="lineNum">     496 </span>            :                 }</a>
 <a name="497"><span class="lineNum">     497 </span>            : </a>
 <a name="498"><span class="lineNum">     498 </span>            : #ifndef WIN32</a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">       1104 :                 sigprocmask(SIG_SETMASK, &amp;sigblock, &amp;origsig);</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">        249 :                 sigprocmask(SIG_SETMASK, &amp;sigblock, &amp;origsig);</span></a>
 <a name="500"><span class="lineNum">     500 </span>            : #ifdef WITH_EPOLL</a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">       1104 :                 fdcount = epoll_wait(db-&gt;epollfd, events, MAX_EVENTS, 100);</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">        249 :                 fdcount = epoll_wait(db-&gt;epollfd, events, MAX_EVENTS, 100);</span></a>
 <a name="502"><span class="lineNum">     502 </span>            : #else</a>
 <a name="503"><span class="lineNum">     503 </span>            :                 fdcount = poll(pollfds, pollfd_index, 100);</a>
 <a name="504"><span class="lineNum">     504 </span>            : #endif</a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">       1104 :                 sigprocmask(SIG_SETMASK, &amp;origsig, NULL);</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">        249 :                 sigprocmask(SIG_SETMASK, &amp;origsig, NULL);</span></a>
 <a name="506"><span class="lineNum">     506 </span>            : #else</a>
 <a name="507"><span class="lineNum">     507 </span>            :                 fdcount = WSAPoll(pollfds, pollfd_index, 100);</a>
 <a name="508"><span class="lineNum">     508 </span>            : #endif</a>
 <a name="509"><span class="lineNum">     509 </span>            : #ifdef WITH_EPOLL</a>
-<a name="510"><span class="lineNum">     510 </span><span class="lineCov">       1104 :                 switch(fdcount){</span></a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineCov">        249 :                 switch(fdcount){</span></a>
 <a name="511"><span class="lineNum">     511 </span><span class="lineNoCov">          0 :                 case -1:</span></a>
 <a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :                         if(errno != EINTR){</span></a>
 <a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :                                 log__printf(NULL, MOSQ_LOG_ERR, &quot;Error in epoll waiting: %s.&quot;, strerror(errno));</span></a>
@@ -578,28 +578,28 @@
 <a name="516"><span class="lineNum">     516 </span>            :                 case 0:</a>
 <a name="517"><span class="lineNum">     517 </span>            :                         break;</a>
 <a name="518"><span class="lineNum">     518 </span>            :                 default:</a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         21 :                         for(i=0; i&lt;fdcount; i++){</span></a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         32 :                                 for(j=0; j&lt;listensock_count; j++){</span></a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         37 :                                         if (events[i].data.fd == listensock[j]) {</span></a>
-<a name="522"><span class="lineNum">     522 </span><span class="lineCov">          5 :                                                 if (events[i].events &amp; (EPOLLIN | EPOLLPRI)){</span></a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         10 :                                                         while((ev.data.fd = net__socket_accept(db, listensock[j])) != -1){</span></a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">          5 :                                                                 ev.events = EPOLLIN;</span></a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">          5 :                                                                 if (epoll_ctl(db-&gt;epollfd, EPOLL_CTL_ADD, ev.data.fd, &amp;ev) == -1) {</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">         44 :                         for(i=0; i&lt;fdcount; i++){</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">         66 :                                 for(j=0; j&lt;listensock_count; j++){</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">         77 :                                         if (events[i].data.fd == listensock[j]) {</span></a>
+<a name="522"><span class="lineNum">     522 </span><span class="lineCov">         11 :                                                 if (events[i].events &amp; (EPOLLIN | EPOLLPRI)){</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         22 :                                                         while((ev.data.fd = net__socket_accept(db, listensock[j])) != -1){</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         11 :                                                                 ev.events = EPOLLIN;</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         11 :                                                                 if (epoll_ctl(db-&gt;epollfd, EPOLL_CTL_ADD, ev.data.fd, &amp;ev) == -1) {</span></a>
 <a name="526"><span class="lineNum">     526 </span><span class="lineNoCov">          0 :                                                                         log__printf(NULL, MOSQ_LOG_ERR, &quot;Error in epoll accepting: %s&quot;, strerror(errno));</span></a>
 <a name="527"><span class="lineNum">     527 </span>            :                                                                 }</a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">          5 :                                                                 context = NULL;</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">          5 :                                                                 HASH_FIND(hh_sock, db-&gt;contexts_by_sock, &amp;(ev.data.fd), sizeof(mosq_sock_t), context);</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          5 :                                                                 if(!context) {</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">         11 :                                                                 context = NULL;</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         11 :                                                                 HASH_FIND(hh_sock, db-&gt;contexts_by_sock, &amp;(ev.data.fd), sizeof(mosq_sock_t), context);</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">         11 :                                                                 if(!context) {</span></a>
 <a name="531"><span class="lineNum">     531 </span><span class="lineNoCov">          0 :                                                                         log__printf(NULL, MOSQ_LOG_ERR, &quot;Error in epoll accepting: no context&quot;);</span></a>
 <a name="532"><span class="lineNum">     532 </span>            :                                                                 }</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">          5 :                                                                 context-&gt;events = EPOLLIN;</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         11 :                                                                 context-&gt;events = EPOLLIN;</span></a>
 <a name="534"><span class="lineNum">     534 </span>            :                                                         }</a>
 <a name="535"><span class="lineNum">     535 </span>            :                                                 }</a>
 <a name="536"><span class="lineNum">     536 </span>            :                                                 break;</a>
 <a name="537"><span class="lineNum">     537 </span>            :                                         }</a>
 <a name="538"><span class="lineNum">     538 </span>            :                                 }</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         21 :                                 if (j == listensock_count) {</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">         16 :                                         loop_handle_reads_writes(db, events[i].data.fd, events[i].events);</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         44 :                                 if (j == listensock_count) {</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">         33 :                                         loop_handle_reads_writes(db, events[i].data.fd, events[i].events);</span></a>
 <a name="541"><span class="lineNum">     541 </span>            :                                 }</a>
 <a name="542"><span class="lineNum">     542 </span>            :                         }</a>
 <a name="543"><span class="lineNum">     543 </span>            :                 }</a>
@@ -618,7 +618,7 @@
 <a name="556"><span class="lineNum">     556 </span>            :                 }</a>
 <a name="557"><span class="lineNum">     557 </span>            : #endif</a>
 <a name="558"><span class="lineNum">     558 </span>            : #ifdef WITH_PERSISTENCE</a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">       1104 :                 if(db-&gt;config-&gt;persistence &amp;&amp; db-&gt;config-&gt;autosave_interval){</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">        249 :                 if(db-&gt;config-&gt;persistence &amp;&amp; db-&gt;config-&gt;autosave_interval){</span></a>
 <a name="560"><span class="lineNum">     560 </span><span class="lineNoCov">          0 :                         if(db-&gt;config-&gt;autosave_on_changes){</span></a>
 <a name="561"><span class="lineNum">     561 </span><span class="lineNoCov">          0 :                                 if(db-&gt;persistence_changes &gt;= db-&gt;config-&gt;autosave_interval){</span></a>
 <a name="562"><span class="lineNum">     562 </span><span class="lineNoCov">          0 :                                         persist__backup(db, false);</span></a>
@@ -634,12 +634,12 @@
 <a name="572"><span class="lineNum">     572 </span>            : #endif</a>
 <a name="573"><span class="lineNum">     573 </span>            : </a>
 <a name="574"><span class="lineNum">     574 </span>            : #ifdef WITH_PERSISTENCE</a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">       1104 :                 if(flag_db_backup){</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">        249 :                 if(flag_db_backup){</span></a>
 <a name="576"><span class="lineNum">     576 </span><span class="lineNoCov">          0 :                         persist__backup(db, false);</span></a>
 <a name="577"><span class="lineNum">     577 </span><span class="lineNoCov">          0 :                         flag_db_backup = false;</span></a>
 <a name="578"><span class="lineNum">     578 </span>            :                 }</a>
 <a name="579"><span class="lineNum">     579 </span>            : #endif</a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">       1104 :                 if(flag_reload){</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">        249 :                 if(flag_reload){</span></a>
 <a name="581"><span class="lineNum">     581 </span><span class="lineNoCov">          0 :                         log__printf(NULL, MOSQ_LOG_INFO, &quot;Reloading config.&quot;);</span></a>
 <a name="582"><span class="lineNum">     582 </span><span class="lineNoCov">          0 :                         config__read(db, db-&gt;config, true);</span></a>
 <a name="583"><span class="lineNum">     583 </span><span class="lineNoCov">          0 :                         mosquitto_security_cleanup(db, true);</span></a>
@@ -649,7 +649,7 @@
 <a name="587"><span class="lineNum">     587 </span><span class="lineNoCov">          0 :                         log__init(db-&gt;config);</span></a>
 <a name="588"><span class="lineNum">     588 </span><span class="lineNoCov">          0 :                         flag_reload = false;</span></a>
 <a name="589"><span class="lineNum">     589 </span>            :                 }</a>
-<a name="590"><span class="lineNum">     590 </span><span class="lineCov">       1104 :                 if(flag_tree_print){</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        249 :                 if(flag_tree_print){</span></a>
 <a name="591"><span class="lineNum">     591 </span><span class="lineNoCov">          0 :                         sub__tree_print(db-&gt;subs, 0);</span></a>
 <a name="592"><span class="lineNum">     592 </span><span class="lineNoCov">          0 :                         flag_tree_print = false;</span></a>
 <a name="593"><span class="lineNum">     593 </span>            :                 }</a>
@@ -678,14 +678,14 @@
 <a name="616"><span class="lineNum">     616 </span><span class="lineCov">          1 :         return MOSQ_ERR_SUCCESS;</span></a>
 <a name="617"><span class="lineNum">     617 </span>            : }</a>
 <a name="618"><span class="lineNum">     618 </span>            : </a>
-<a name="619"><span class="lineNum">     619 </span><span class="lineCov">          5 : void do_disconnect(struct mosquitto_db *db, struct mosquitto *context)</span></a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineCov">         11 : void do_disconnect(struct mosquitto_db *db, struct mosquitto *context)</span></a>
 <a name="620"><span class="lineNum">     620 </span>            : {</a>
 <a name="621"><span class="lineNum">     621 </span>            :         char *id;</a>
 <a name="622"><span class="lineNum">     622 </span>            : #ifdef WITH_EPOLL</a>
 <a name="623"><span class="lineNum">     623 </span>            :         struct epoll_event ev;</a>
 <a name="624"><span class="lineNum">     624 </span>            : #endif</a>
 <a name="625"><span class="lineNum">     625 </span>            : </a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineCov">          5 :         if(context-&gt;state == mosq_cs_disconnected){</span></a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">         11 :         if(context-&gt;state == mosq_cs_disconnected){</span></a>
 <a name="627"><span class="lineNum">     627 </span><span class="lineNoCov">          0 :                 return;</span></a>
 <a name="628"><span class="lineNum">     628 </span>            :         }</a>
 <a name="629"><span class="lineNum">     629 </span>            : #ifdef WITH_WEBSOCKETS</a>
@@ -710,45 +710,45 @@
 <a name="648"><span class="lineNum">     648 </span>            :         }else</a>
 <a name="649"><span class="lineNum">     649 </span>            : #endif</a>
 <a name="650"><span class="lineNum">     650 </span>            :         {</a>
-<a name="651"><span class="lineNum">     651 </span><span class="lineCov">          5 :                 if(db-&gt;config-&gt;connection_messages == true){</span></a>
-<a name="652"><span class="lineNum">     652 </span><span class="lineCov">          5 :                         if(context-&gt;id){</span></a>
-<a name="653"><span class="lineNum">     653 </span><span class="lineCov">          5 :                                 id = context-&gt;id;</span></a>
+<a name="651"><span class="lineNum">     651 </span><span class="lineCov">         11 :                 if(db-&gt;config-&gt;connection_messages == true){</span></a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">         11 :                         if(context-&gt;id){</span></a>
+<a name="653"><span class="lineNum">     653 </span><span class="lineCov">         11 :                                 id = context-&gt;id;</span></a>
 <a name="654"><span class="lineNum">     654 </span>            :                         }else{</a>
 <a name="655"><span class="lineNum">     655 </span>            :                                 id = &quot;&lt;unknown&gt;&quot;;</a>
 <a name="656"><span class="lineNum">     656 </span>            :                         }</a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineCov">          5 :                         if(context-&gt;state != mosq_cs_disconnecting){</span></a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">          3 :                                 log__printf(NULL, MOSQ_LOG_NOTICE, &quot;Socket error on client %s, disconnecting.&quot;, id);</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">         11 :                         if(context-&gt;state != mosq_cs_disconnecting){</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineCov">          2 :                                 log__printf(NULL, MOSQ_LOG_NOTICE, &quot;Socket error on client %s, disconnecting.&quot;, id);</span></a>
 <a name="659"><span class="lineNum">     659 </span>            :                         }else{</a>
-<a name="660"><span class="lineNum">     660 </span><span class="lineCov">          2 :                                 log__printf(NULL, MOSQ_LOG_NOTICE, &quot;Client %s disconnected.&quot;, id);</span></a>
+<a name="660"><span class="lineNum">     660 </span><span class="lineCov">          9 :                                 log__printf(NULL, MOSQ_LOG_NOTICE, &quot;Client %s disconnected.&quot;, id);</span></a>
 <a name="661"><span class="lineNum">     661 </span>            :                         }</a>
 <a name="662"><span class="lineNum">     662 </span>            :                 }</a>
 <a name="663"><span class="lineNum">     663 </span>            : #ifdef WITH_EPOLL</a>
-<a name="664"><span class="lineNum">     664 </span><span class="lineCov">          5 :                 if (context-&gt;sock != INVALID_SOCKET &amp;&amp; epoll_ctl(db-&gt;epollfd, EPOLL_CTL_DEL, context-&gt;sock, &amp;ev) == -1) {</span></a>
+<a name="664"><span class="lineNum">     664 </span><span class="lineCov">         11 :                 if (context-&gt;sock != INVALID_SOCKET &amp;&amp; epoll_ctl(db-&gt;epollfd, EPOLL_CTL_DEL, context-&gt;sock, &amp;ev) == -1) {</span></a>
 <a name="665"><span class="lineNum">     665 </span><span class="lineNoCov">          0 :                         if(db-&gt;config-&gt;connection_messages == true){</span></a>
 <a name="666"><span class="lineNum">     666 </span><span class="lineNoCov">          0 :                                 log__printf(NULL, MOSQ_LOG_DEBUG, &quot;Error in epoll disconnecting: %s&quot;, strerror(errno));</span></a>
 <a name="667"><span class="lineNum">     667 </span>            :                         }</a>
 <a name="668"><span class="lineNum">     668 </span>            :                 }</a>
 <a name="669"><span class="lineNum">     669 </span>            : #endif          </a>
-<a name="670"><span class="lineNum">     670 </span><span class="lineCov">          5 :                 context__disconnect(db, context);</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">         11 :                 context__disconnect(db, context);</span></a>
 <a name="671"><span class="lineNum">     671 </span>            : #ifdef WITH_BRIDGE</a>
-<a name="672"><span class="lineNum">     672 </span><span class="lineCov">          5 :                 if(context-&gt;clean_session &amp;&amp; !context-&gt;bridge){</span></a>
+<a name="672"><span class="lineNum">     672 </span><span class="lineCov">         11 :                 if(context-&gt;clean_session &amp;&amp; !context-&gt;bridge){</span></a>
 <a name="673"><span class="lineNum">     673 </span>            : #else</a>
 <a name="674"><span class="lineNum">     674 </span>            :                 if(context-&gt;clean_session){</a>
 <a name="675"><span class="lineNum">     675 </span>            : #endif</a>
-<a name="676"><span class="lineNum">     676 </span><span class="lineCov">          5 :                         context__add_to_disused(db, context);</span></a>
-<a name="677"><span class="lineNum">     677 </span><span class="lineCov">          5 :                         if(context-&gt;id){</span></a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">          5 :                                 context__remove_from_by_id(db, context);</span></a>
-<a name="679"><span class="lineNum">     679 </span><span class="lineCov">          5 :                                 mosquitto__free(context-&gt;id);</span></a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">          5 :                                 context-&gt;id = NULL;</span></a>
+<a name="676"><span class="lineNum">     676 </span><span class="lineCov">         11 :                         context__add_to_disused(db, context);</span></a>
+<a name="677"><span class="lineNum">     677 </span><span class="lineCov">         11 :                         if(context-&gt;id){</span></a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">         11 :                                 context__remove_from_by_id(db, context);</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">         11 :                                 mosquitto__free(context-&gt;id);</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">         11 :                                 context-&gt;id = NULL;</span></a>
 <a name="681"><span class="lineNum">     681 </span>            :                         }</a>
 <a name="682"><span class="lineNum">     682 </span>            :                 }</a>
-<a name="683"><span class="lineNum">     683 </span><span class="lineCov">          5 :                 context-&gt;state = mosq_cs_disconnected;</span></a>
+<a name="683"><span class="lineNum">     683 </span><span class="lineCov">         11 :                 context-&gt;state = mosq_cs_disconnected;</span></a>
 <a name="684"><span class="lineNum">     684 </span>            :         }</a>
 <a name="685"><span class="lineNum">     685 </span>            : }</a>
 <a name="686"><span class="lineNum">     686 </span>            : </a>
 <a name="687"><span class="lineNum">     687 </span>            : </a>
 <a name="688"><span class="lineNum">     688 </span>            : #ifdef WITH_EPOLL</a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         16 : static void loop_handle_reads_writes(struct mosquitto_db *db, mosq_sock_t sock, uint32_t events)</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">         33 : static void loop_handle_reads_writes(struct mosquitto_db *db, mosq_sock_t sock, uint32_t events)</span></a>
 <a name="690"><span class="lineNum">     690 </span>            : #else</a>
 <a name="691"><span class="lineNum">     691 </span>            : static void loop_handle_reads_writes(struct mosquitto_db *db, struct pollfd *pollfds)</a>
 <a name="692"><span class="lineNum">     692 </span>            : #endif</a>
@@ -762,12 +762,12 @@
 <a name="700"><span class="lineNum">     700 </span>            : </a>
 <a name="701"><span class="lineNum">     701 </span>            : #ifdef WITH_EPOLL</a>
 <a name="702"><span class="lineNum">     702 </span>            :         int i;</a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">         16 :         context = NULL;</span></a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">         16 :         HASH_FIND(hh_sock, db-&gt;contexts_by_sock, &amp;sock, sizeof(mosq_sock_t), context);</span></a>
-<a name="705"><span class="lineNum">     705 </span><span class="lineCov">         16 :         if(!context) {</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">         33 :         context = NULL;</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">         33 :         HASH_FIND(hh_sock, db-&gt;contexts_by_sock, &amp;sock, sizeof(mosq_sock_t), context);</span></a>
+<a name="705"><span class="lineNum">     705 </span><span class="lineCov">         33 :         if(!context) {</span></a>
 <a name="706"><span class="lineNum">     706 </span><span class="lineNoCov">          0 :                 return;</span></a>
 <a name="707"><span class="lineNum">     707 </span>            :         }</a>
-<a name="708"><span class="lineNum">     708 </span><span class="lineCov">         32 :         for (i=0;i&lt;1;i++) {</span></a>
+<a name="708"><span class="lineNum">     708 </span><span class="lineCov">         66 :         for (i=0;i&lt;1;i++) {</span></a>
 <a name="709"><span class="lineNum">     709 </span>            : #else</a>
 <a name="710"><span class="lineNum">     710 </span>            :         HASH_ITER(hh_sock, db-&gt;contexts_by_sock, context, ctxt_tmp){</a>
 <a name="711"><span class="lineNum">     711 </span>            :                 if(context-&gt;pollfd_index &lt; 0){</a>
@@ -800,12 +800,12 @@
 <a name="738"><span class="lineNum">     738 </span>            : </a>
 <a name="739"><span class="lineNum">     739 </span>            : #ifdef WITH_TLS</a>
 <a name="740"><span class="lineNum">     740 </span>            : #ifdef WITH_EPOLL</a>
-<a name="741"><span class="lineNum">     741 </span><span class="lineCov">         32 :                 if(events &amp; EPOLLOUT ||</span></a>
+<a name="741"><span class="lineNum">     741 </span><span class="lineCov">         66 :                 if(events &amp; EPOLLOUT ||</span></a>
 <a name="742"><span class="lineNum">     742 </span>            : #else</a>
 <a name="743"><span class="lineNum">     743 </span>            :                 if(pollfds[context-&gt;pollfd_index].revents &amp; POLLOUT ||</a>
 <a name="744"><span class="lineNum">     744 </span>            : #endif</a>
-<a name="745"><span class="lineNum">     745 </span><span class="lineCov">         32 :                                 context-&gt;want_write ||</span></a>
-<a name="746"><span class="lineNum">     746 </span><span class="lineCov">         16 :                                 (context-&gt;ssl &amp;&amp; context-&gt;state == mosq_cs_new)){</span></a>
+<a name="745"><span class="lineNum">     745 </span><span class="lineCov">         66 :                                 context-&gt;want_write ||</span></a>
+<a name="746"><span class="lineNum">     746 </span><span class="lineCov">         33 :                                 (context-&gt;ssl &amp;&amp; context-&gt;state == mosq_cs_new)){</span></a>
 <a name="747"><span class="lineNum">     747 </span>            : #else</a>
 <a name="748"><span class="lineNum">     748 </span>            : #ifdef WITH_EPOLL</a>
 <a name="749"><span class="lineNum">     749 </span>            :                 if(events &amp; EPOLLOUT){</a>
@@ -838,12 +838,12 @@
 <a name="776"><span class="lineNum">     776 </span>            :         }</a>
 <a name="777"><span class="lineNum">     777 </span>            : </a>
 <a name="778"><span class="lineNum">     778 </span>            : #ifdef WITH_EPOLL</a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">         16 :         context = NULL;</span></a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">         16 :         HASH_FIND(hh_sock, db-&gt;contexts_by_sock, &amp;sock, sizeof(mosq_sock_t), context);</span></a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">         16 :         if(!context) {</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">         33 :         context = NULL;</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">         33 :         HASH_FIND(hh_sock, db-&gt;contexts_by_sock, &amp;sock, sizeof(mosq_sock_t), context);</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">         33 :         if(!context) {</span></a>
 <a name="782"><span class="lineNum">     782 </span>            :                 return;</a>
 <a name="783"><span class="lineNum">     783 </span>            :         }</a>
-<a name="784"><span class="lineNum">     784 </span><span class="lineCov">         32 :         for (i=0;i&lt;1;i++) {</span></a>
+<a name="784"><span class="lineNum">     784 </span><span class="lineCov">         66 :         for (i=0;i&lt;1;i++) {</span></a>
 <a name="785"><span class="lineNum">     785 </span>            : #else</a>
 <a name="786"><span class="lineNum">     786 </span>            :         HASH_ITER(hh_sock, db-&gt;contexts_by_sock, context, ctxt_tmp){</a>
 <a name="787"><span class="lineNum">     787 </span>            :                 if(context-&gt;pollfd_index &lt; 0){</a>
@@ -859,7 +859,7 @@
 <a name="797"><span class="lineNum">     797 </span>            : </a>
 <a name="798"><span class="lineNum">     798 </span>            : #ifdef WITH_TLS</a>
 <a name="799"><span class="lineNum">     799 </span>            : #ifdef WITH_EPOLL</a>
-<a name="800"><span class="lineNum">     800 </span><span class="lineCov">         16 :                 if(events &amp; EPOLLIN ||</span></a>
+<a name="800"><span class="lineNum">     800 </span><span class="lineCov">         33 :                 if(events &amp; EPOLLIN ||</span></a>
 <a name="801"><span class="lineNum">     801 </span>            : #else</a>
 <a name="802"><span class="lineNum">     802 </span>            :                 if(pollfds[context-&gt;pollfd_index].revents &amp; POLLIN ||</a>
 <a name="803"><span class="lineNum">     803 </span>            : #endif</a>
@@ -872,11 +872,11 @@
 <a name="810"><span class="lineNum">     810 </span>            : #endif</a>
 <a name="811"><span class="lineNum">     811 </span>            : #endif</a>
 <a name="812"><span class="lineNum">     812 </span>            :                         do{</a>
-<a name="813"><span class="lineNum">     813 </span><span class="lineCov">         16 :                                 if(packet__read(db, context)){</span></a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">          3 :                                         do_disconnect(db, context);</span></a>
-<a name="815"><span class="lineNum">     815 </span><span class="lineCov">          3 :                                         continue;</span></a>
+<a name="813"><span class="lineNum">     813 </span><span class="lineCov">         33 :                                 if(packet__read(db, context)){</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">          2 :                                         do_disconnect(db, context);</span></a>
+<a name="815"><span class="lineNum">     815 </span><span class="lineCov">          2 :                                         continue;</span></a>
 <a name="816"><span class="lineNum">     816 </span>            :                                 }</a>
-<a name="817"><span class="lineNum">     817 </span><span class="lineCov">         16 :                         }while(SSL_DATA_PENDING(context));</span></a>
+<a name="817"><span class="lineNum">     817 </span><span class="lineCov">         33 :                         }while(SSL_DATA_PENDING(context));</span></a>
 <a name="818"><span class="lineNum">     818 </span>            :                 }else{</a>
 <a name="819"><span class="lineNum">     819 </span>            : #ifdef WITH_EPOLL</a>
 <a name="820"><span class="lineNum">     820 </span><span class="lineNoCov">          0 :                         if(events &amp; (EPOLLERR | EPOLLHUP)){</span></a>
