@@ -8,7 +8,7 @@ cpp/*.test
 *.vglog
 
 build/
-bin/
+#bin/
 
 client/mosquitto_pub
 client/mosquitto_sub
