@@ -9,6 +9,7 @@ cpp/*.test
 
 build/
 #bin/
+html_out/
 
 client/mosquitto_pub
 client/mosquitto_sub
