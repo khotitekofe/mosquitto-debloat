@@ -56,4 +56,4 @@ def random_tests(count=10):
 
 if __name__ == "__main__":
     simple_tests()
-    random_tests(100)
+    random_tests(10)
