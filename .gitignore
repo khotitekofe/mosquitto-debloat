@@ -7,6 +7,7 @@ cpp/*.test
 *.pyc
 *.vglog
 
+.DS_Store
 build/
 #bin/
 #html_out/
