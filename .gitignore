@@ -7,10 +7,13 @@ cpp/*.test
 *.pyc
 *.vglog
 
+.idea/
 build/
 #bin/
 html_out/
 *.cmake
+
+cmake-build-debug/
 
 client/mosquitto_pub
 client/mosquitto_sub
