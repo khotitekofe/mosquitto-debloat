@@ -35,7 +35,7 @@ uninstall :
 	-rm -f "${DESTDIR}${incdir}/mosquittopp.h"
 
 clean :
-	-rm -f *.o *.gcno libmosquittopp.so.${SOVERSION} libmosquittopp.a
+	-rm -f *.o *.gcno *.gcda libmosquittopp.so.${SOVERSION} libmosquittopp.a
 
 libmosquittopp.so.${SOVERSION} : mosquittopp.o
 	${CROSS_COMPILE}$(CXX) -shared $(LIB_LDFLAGS) $< -o $@ ../libmosquitto.so.${SOVERSION}
