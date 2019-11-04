@@ -1,9 +1,9 @@
 include ../config.mk
 
-CC=cc
-CFLAGS=-I../src -I../lib -I. -I.. -Wall -ggdb -DDEBUG -DWITH_CLIENT
+CC=clang
+CFLAGS=-I../src -I../lib -I. -I.. -Wall -ggdb -DDEBUG -DWITH_CLIENT -c -emit-llvm
 LDFLAGS=
-OBJS=context.o database.o logging.o memory.o net.o raw_send.o raw_send_client.o read_handle.o read_handle_client.o util.o
+OBJS=context.bc database.bc logging.bc memory.bc net.bc raw_send.bc raw_send_client.bc read_handle.bc read_handle_client.bc util.bc
 SOVERSION=1
 
 .PHONY: all test clean reallyclean
@@ -19,77 +19,77 @@ ptest :
 	$(MAKE) -C broker ptest
 	$(MAKE) -C lib ptest
 
-fake_user : fake_user.o
+fake_user : fake_user.bc
 	${CC} $^ -o $@ ../lib/libmosquitto.so.${SOVERSION}
 	#${CC} $^ -o $@ -lmosquitto
 
-fake_user.o : fake_user.c
+fake_user.bc : fake_user.c
 	${CC} $(CFLAGS) -c $< -o $@
 
-msgsps_pub : msgsps_pub.o
+msgsps_pub : msgsps_pub.bc
 	${CC} $^ -o $@ ../lib/libmosquitto.so.${SOVERSION}
 
-msgsps_pub.o : msgsps_pub.c msgsps_common.h
+msgsps_pub.bc : msgsps_pub.c msgsps_common.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-msgsps_sub : msgsps_sub.o
+msgsps_sub : msgsps_sub.bc
 	${CC} $^ -o $@ ../lib/libmosquitto.so.${SOVERSION}
 
-msgsps_sub.o : msgsps_sub.c msgsps_common.h
+msgsps_sub.bc : msgsps_sub.c msgsps_common.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-packet-gen : packet-gen.o
+packet-gen : packet-gen.bc
 	${CC} $^ -o $@ ../lib/libmosquitto.so.${SOVERSION}
 
-packet-gen.o : packet-gen.c
+packet-gen.bc : packet-gen.c
 	${CC} $(CFLAGS) -c $< -o $@
 
-qos : qos.o
+qos : qos.bc
 	${CC} $^ -o $@ ../lib/libmosquitto.so.${SOVERSION}
 
-qos.o : qos.c
+qos.bc : qos.c
 	${CC} $(CFLAGS) -c $< -o $@
 
-random_client : random_client.o ${OBJS}
+random_client : random_client.bc ${OBJS}
 	${CC} $^ -o $@ ${LDFLAGS}
 
-random_client.o : random_client.c ../src/mqtt3.h
+random_client.bc : random_client.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-context.o : ../src/context.c ../src/mqtt3.h
+context.bc : ../src/context.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-database.o : ../src/database.c ../src/mqtt3.h
+database.bc : ../src/database.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-logging.o : ../src/logging.c ../src/mqtt3.h
+logging.bc : ../src/logging.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-memory.o : ../src/memory.c ../src/mqtt3.h
+memory.bc : ../src/memory.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-net.o : ../src/net.c ../src/mqtt3.h
+net.bc : ../src/net.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-raw_send.o : ../src/raw_send.c ../src/mqtt3.h
+raw_send.bc : ../src/raw_send.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-raw_send_client.o : ../src/raw_send_client.c ../src/mqtt3.h
+raw_send_client.bc : ../src/raw_send_client.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-read_handle.o : ../src/read_handle.c ../src/mqtt3.h
+read_handle.bc : ../src/read_handle.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-read_handle_client.o : ../src/read_handle_client.c ../src/mqtt3.h
+read_handle_client.bc : ../src/read_handle_client.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
-util.o : ../src/util.c ../src/mqtt3.h
+util.bc : ../src/util.c ../src/mqtt3.h
 	${CC} $(CFLAGS) -c $< -o $@
 
 reallyclean : clean
-	-rm -f *.orig
+	-rm -f *.bcrig
 
 clean : 
-	-rm -f *.o random_client qos msgsps_pub msgsps_sub fake_user test_client *.pyc
+	-rm -f *.bc random_client qos msgsps_pub msgsps_sub fake_user test_client *.pyc
 	$(MAKE) -C lib clean
 	$(MAKE) -C broker clean
